@@ -46,6 +46,26 @@ server.port=8080
 
 > 🔸 Assurez-vous que la base de données `todolist` est créée dans **phpMyAdmin** (WampServer).
 > 🔸 Le port MySQL ici est `3308`, assurez-vous qu’il est bien activé dans Wamp.
+> 🔸 Ensuite, créez les deux tables suivantes dans la base de données todolist :
+🔹 Table user
+
+CREATE TABLE user (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  name VARCHAR(100) NOT NULL,
+  email VARCHAR(150) NOT NULL UNIQUE,
+  password VARCHAR(255) NOT NULL
+);
+
+🔹 Table projet
+
+CREATE TABLE projet (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  name VARCHAR(100) NOT NULL,
+  description TEXT,
+  user_id INT,
+  FOREIGN KEY (user_id) REFERENCES user(id)
+);
+
 
 ---
 
